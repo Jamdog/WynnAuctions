@@ -22,6 +22,55 @@ namespace wynnbay {
 
       return $string;
     }
+    
+    /**
+     * 32-bit Bitvector Handling: Check if a flag is set
+     * 
+     * @param int $bv   : Bitvector value (Binary flags)
+     * @param int $flag : Flag position (0=first)
+     * @return bool
+     */
+    public function check_bv($bv, $flag)
+    {
+      $bin_flag = (1 << ($flag));
+
+      if (($bv & $bin_flag) == $bin_flag) return TRUE;
+      else                                return FALSE;
+    }
+
+    /**
+     * 32-bit Bitvector Handling: Set a bitvector flag (or leave set)
+     * 
+     * @param int $bv   : Bitvector value (Binary flags)
+     * @param int $flag : Flag position (0=first)
+     * @return int      : New bitvector value
+     */
+    public function set_bv($bv, $flag)
+    {
+      $bin_flag = (1 << ($flag));
+
+      $ret = ($bv | $bin_flag);
+      return $ret;
+    }
+
+    /**
+     * 32-bit Bitvector Handling: Unset a bitvector flag (or leave unset)
+     * 
+     * @param int $bv   : Bitvector value (Binary flags)
+     * @param int $flag : Flag position (0=first)
+     * @return int      : New bitvector value
+     */
+    public function remove_bv($bv, $flag)
+    {
+      $bin_flag = (1 << ($flag));
+
+      if (($bv & $bin_flag) == $bin_flag) {
+        $ret = ($bv & (~($bin_flag)));
+      } else {
+        $ret = $bv;
+      }
+      return $ret;
+    }
 
   }
 
