@@ -7,12 +7,8 @@
  * @author Stefan Cole (aka. Jamdoggy) <jamdog@live.co.uk>
  */
 
-function protectInput($protectinput) {
-	$protectinput = stripslashes($protectinput);
-	$protectinput = str_replace(array("<", ">", "!", "?", "(", ")"), "", $protectinput);
-
-	return $protectinput;
-}
+// Temp bootstrap class - will mvc later
+require_once 'bootstrap.php';
 
 // Check player name is valid (fully-paid-up minecraft user) else exit
 $price = array();
@@ -37,16 +33,16 @@ if ($price['blocks'] > 63) {    // Convert (over 63) blocks to liquid emeralds
 
 // Which image do we use?  Do we need to show blocks/liquids?
 if ($price['liquid'] > 0) {            // At least 1 LE, so show LE image
-  $priceImg = 'images/bg_le.png';
+  $priceImg = 'assets/images/bg_le.png';
 } else if ($price['blocks'] > 0) {     // No LE, but at least 1 EB
-  $priceImg = 'images/bg_eb.png';
+  $priceImg = 'assets/images/bg_eb.png';
 } else {                               // None of the above, assume emeralds-only
-  $priceImg = 'images/bg_e.png';
+  $priceImg = 'assets/images/bg_e.png';
 }
 $img = imagecreatefrompng($priceImg);
 
 // Font Variables
-$fontPrice  = 'font/DroidSans.ttf';
+$fontPrice  = 'assets/font/DroidSans.ttf';
 $colorPrice = imagecolorallocate($img, 10, 10, 10);
 $colorZero  = imagecolorallocate($img, 150, 150, 150);
 
