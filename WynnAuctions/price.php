@@ -12,9 +12,9 @@ require_once 'bootstrap.php';
 
 // Check player name is valid (fully-paid-up minecraft user) else exit
 $price = array();
-$price['emeralds'] = protectInput($_REQUEST['e']);   // Emeralds
-$price['blocks']   = protectInput($_REQUEST['eb']);  // Emerald Blocks
-$price['liquid']   = protectInput($_REQUEST['le']);  // Liquid Emeralds
+$price['emeralds'] = wynnbay\Core::protectInput($_REQUEST['e']);   // Emeralds
+$price['blocks']   = wynnbay\Core::protectInput($_REQUEST['eb']);  // Emerald Blocks
+$price['liquid']   = wynnbay\Core::protectInput($_REQUEST['le']);  // Liquid Emeralds
 
 if (!isset($price['emeralds']) || !is_numeric($price['emeralds'])) $price['emeralds']=0;
 if (!isset($price['blocks'])   || !is_numeric($price['blocks']))   $price['blocks']=0;
